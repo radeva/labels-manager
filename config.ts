@@ -36,7 +36,7 @@ export const labelRules = [
     },
     { 
         from: ['s:low', 's: low', 'minor', 'severity: low'], 
-        to:  { name: 'severity: low', color: 'ffff66', required: true }
+        to:  { name: 'severity: low', color: 'fef2c0', required: true }
     },
     { 
         from: ['need more info', 'needs more info'], 
