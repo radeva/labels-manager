@@ -85,13 +85,15 @@ export const labelRules = [
 ]
 
 export const repos = [
-    // 'nativescript-facebook',
-    // 'nativescript-camera',
-    // 'nativescript-imagepicker',
-    // 'nativescript-dev-sass',
-    // 'nativescript-dev-less',
-    // 'nativescript-background-http',
-    // 'nativescript-geolocation',
-    // 'nativescript-fresco',
+    'nativescript-facebook',
+    'nativescript-camera',
+    'nativescript-imagepicker',
+    'nativescript-dev-sass',
+    'nativescript-dev-less',
+    'nativescript-background-http',
+    'nativescript-geolocation',
+    'nativescript-fresco',
     'push-plugin'
 ]
+
+export const organization = 'NativeScript';
