@@ -83,3 +83,15 @@ export const labelRules = [
         to: { name: 'support: sev3', color: '8f563f', required: true }
     }
 ]
+
+export const repos = [
+    // 'nativescript-facebook',
+    // 'nativescript-camera',
+    // 'nativescript-imagepicker',
+    // 'nativescript-dev-sass',
+    // 'nativescript-dev-less',
+    // 'nativescript-background-http',
+    // 'nativescript-geolocation',
+    // 'nativescript-fresco',
+    'push-plugin'
+]

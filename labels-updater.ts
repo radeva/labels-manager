@@ -1,21 +1,10 @@
 
-import LabelsManager from './labels-manager'
-let labelsManager: LabelsManager;
-let repos = [
-    'nativescript-facebook',
-    'nativescript-camera',
-    'nativescript-imagepicker',
-    'nativescript-dev-sass',
-    'nativescript-dev-less',
-    'nativescript-background-http',
-    'nativescript-geolocation',
-    'nativescript-fresco',
-    'push-plugin'
-]
-
+import RepoLabelsManager from './labels-manager'
+import { repos } from './config';
+let repoLabelsManager: RepoLabelsManager;
 
 for (let repo of repos){
     console.log("Updating " + repo);
-    labelsManager = new LabelsManager(repo, 'NativeScript');
-    labelsManager.updateRepoLabels(false);
+    repoLabelsManager = new RepoLabelsManager(repo, 'NativeScript');
+    repoLabelsManager.updateRepoLabels(false);
 }

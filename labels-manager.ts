@@ -3,14 +3,13 @@ const https = require('https');
 import Label from './label';
 import { token, labelRules } from './config';
 
-
-export default class LabelsManager 
+export default class RepoLabelsManager 
 {
     repo: string
     organization: string
-    constructor(repo:string, organisation: string) {
+    constructor(repo:string, organization: string) {
         this.repo = repo;
-        this.organization = organisation;
+        this.organization = organization;
     }    
     
     public getRepoLabels() : Promise<Array<Label>> {
@@ -54,7 +53,7 @@ export default class LabelsManager
         return this.callGitApi(options);
     }
 
-    callGitApi(opt) : any {
+    callGitApi(opt) : Promise<any> {
 
         let options = {
             host: 'api.github.com',
@@ -100,17 +99,20 @@ export default class LabelsManager
         return promise;
     }
     
-    public updateRepoLabels(dryRun:boolean = true) {
-        this.getRepoLabels()
+    public updateRepoLabels(dryRun:boolean = true) {        
+        let that = this;  
+        that.getRepoLabels()
             .then((currentLabels) => {   
+                let promises = []
                 // update existing labels
                 for (let label of currentLabels){
-                    this.updateLabel(label, dryRun);
+                    promises.push(that.updateLabel(label, dryRun));
                 }
 
-                // add required labels which are missing
-                this.addRequiredLabels(currentLabels, dryRun);
+                return Promise.all(promises);
             })
+            .then(() => that.getRepoLabels())
+            .then((currentLabels) => that.addRequiredLabels(currentLabels, dryRun))
             .catch((err) => {
                 console.log(err);
             });
@@ -121,9 +123,9 @@ export default class LabelsManager
         for(let rule of labelRules) {
             for(let fromLabel of rule.from) {
                 if(label.name.toLowerCase() == fromLabel && 
-                    (label.name != rule.to.name || label.color != rule.to.color) {
-                    console.log("Update from " + label.name + ": " + label.color + 
-                    " to " + rule.to.name + ": " + rule.to.color);
+                    (label.name != rule.to.name || label.color != rule.to.color)) {
+                    console.log("Update from " + label.name + ": " + label.color 
+                    + " to " + rule.to.name + ": " + rule.to.color);
                     if(!dryRun){
                         this.updateLabelInGitHub(label, { name: rule.to.name, color: rule.to.color });
                     }
