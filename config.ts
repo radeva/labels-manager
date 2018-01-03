@@ -1,5 +1,4 @@
-export const org='NativeScript';
-export const token = '<token-here>';
+export const token = '<token>';
 
 export const labelRules = [
     { 
@@ -31,7 +30,7 @@ export const labelRules = [
         to: { name: 'severity: high', color: 'ff0000', required: true }
     },
     { 
-        from: ['s:medium', 's: medium', 'severity: medium'], 
+        from: ['s:medium', 's: medium', 'severity: medium', 's:med'], 
         to: { name: 'severity: medium', color: 'ff9933', required: true }
     },
     { 
@@ -66,6 +65,10 @@ export const labelRules = [
         from: ['linux', 'os: linux', 'os:linux'], 
         to: { name: 'os: linux', color: '006b75', required: true }
     },
+    { 
+        from: ['Mac', 'os: mac', 'os:mac'], 
+        to: { name: 'os: mac', color: '006b75', required: true }
+    },
     {
         from: ['breaking-change', 'breaking change'],
         to: { name: 'breaking-change', color: 'd93f0b', required: true }
@@ -81,7 +84,32 @@ export const labelRules = [
     {
         from: ['sev3'],
         to: { name: 'support: sev3', color: '8f563f', required: true }
+    },
+    {
+        from: ['Done'],
+        to: { name: 'done', color: 'ededed', required: true }
+    },
+    {
+        from: ['In Progress'],
+        to: { name: 'in progress', color: 'ededed', required: true }
+    },
+    {
+        from: ['Planned'],
+        to: { name: 'planned', color: 'ededed', required: true }
+    },
+    {
+        from: ['Ready For Test', 'in review'],
+        to: { name: 'ready for test', color: 'ededed', required: true }
+    },
+    {
+        from: ['ac needed'],
+        to: { name: 'ac needed', color: 'ededed', required: false }
+    },
+    {
+        from: ['ready for release'],
+        to: { name: 'ready for release', color: 'ededed', required: false }
     }
+
 ]
 
 export const repos = [
@@ -93,7 +121,18 @@ export const repos = [
     'nativescript-background-http',
     'nativescript-geolocation',
     'nativescript-fresco',
-    'push-plugin'
+    'push-plugin',
+    'nativescript-plugin-seed',
+    'marketplace-feedback',
+    'nsplugins-internal'
 ]
 
 export const organization = 'NativeScript';
+
+// export const repos = [
+//     'nativescript-ui-feedback',
+//     'nativescript-ui-samples',
+//     'nativescript-ui-samples-angular'
+// ]
+
+// export const organization = 'telerik';
