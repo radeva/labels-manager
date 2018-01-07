@@ -9,5 +9,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "prompt": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^8.5.7"
+  }
 }

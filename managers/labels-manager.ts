@@ -1,21 +1,22 @@
 
 const https = require('https');
 const url = require('url');
-import Label from './label';
-import { token, labelRules } from './config';
+import Label from './../models/label';
+import { labelRules } from './../config';
 
 export default class RepoLabelsManager 
 {
     repo: string
-    organization: string
-    constructor(repo:string, organization: string) {
+    token: string
+
+    constructor(token: string, repo:string) {
+        this.token = token;
         this.repo = repo;
-        this.organization = organization;
     }    
     
     public getRepoLabels() : Promise<Array<Label>> {
         let options = {
-            path: '/repos/' + this.organization + '/' + this.repo + '/labels',
+            path: '/repos/' + this.repo + '/labels',
             method: 'GET'
         };
 
@@ -37,7 +38,7 @@ export default class RepoLabelsManager
     
     updateLabelInGitHub(oldLabel: Label, newLabel: any) : Promise<any> {
         let options = {
-            path: '/repos/' + this.organization + '/' + this.repo + '/labels/' + encodeURIComponent(oldLabel.name),
+            path: '/repos/' + this.repo + '/labels/' + encodeURIComponent(oldLabel.name),
             method: 'PATCH',
             payload: JSON.stringify(newLabel)
         };
@@ -47,12 +48,41 @@ export default class RepoLabelsManager
 
     addLabelInGitHub(newLabel: any) : Promise<any> {
         let options = {
-            path: '/repos/' + this.organization + '/' + this.repo + '/labels',
+            path: '/repos/' + this.repo + '/labels',
             method: 'POST',
             payload: JSON.stringify(newLabel)
         };
 
         return this.callGitApi(options);
+    }
+
+    deleteAllLabelsInGitHub(labels: Array<Label>, dryRun: boolean) : Promise<any> {
+        
+        let that = this;
+        let promises = []
+        // delete existing labels
+        for (let label of labels){
+            console.log(this.repo + ":  Delete label " + label.name);
+            let currentPromise = that.deleteLabel(label, dryRun);
+            if(currentPromise != null) {
+                promises.push(currentPromise);
+            }
+        }
+
+        return Promise.all(promises);
+    }
+
+    deleteLabel(label: Label, dryRun: boolean) {
+        if(!dryRun) {
+            let options = {
+                path: '/repos/' + this.repo + '/labels/' + encodeURIComponent(label.name),
+                method: 'DELETE'
+            };
+    
+            return this.callGitApi(options);
+        } else {
+            return new Promise((resolve, reject) => { resolve() });
+        }
     }
 
     callGitApi(opt, prevData = null, originalPromiseResolve = null, originalPromiseReject = null) : Promise<any> {
@@ -64,7 +94,7 @@ export default class RepoLabelsManager
             method: opt.method,
             headers: { 
                 'User-Agent': '',
-                'Authorization': 'token ' + token,
+                'Authorization': 'token ' + that.token,
                 'Content-Length': opt.payload ? opt.payload.length : 0,
                 'Content-Type': 'application/json'
             }
@@ -213,5 +243,13 @@ export default class RepoLabelsManager
                 }
             }
         }
+    }
+
+    // Init new repo: delete existing labels and add new ones
+    initRepoLabels( dryRun: boolean) {
+        let that = this;
+        that.getRepoLabels()
+            .then((currentLabels) => that.deleteAllLabelsInGitHub(currentLabels, dryRun))
+            .then(() => that.addRequiredLabels([], dryRun))
     }
 }

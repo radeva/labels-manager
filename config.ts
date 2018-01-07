@@ -1,4 +1,5 @@
-export const token = '<token>';
+export const token = null; // your github token here
+export const isDryRun = false; // set isDryRun to true and you will see only what will be changed, but no changes will be applied to GitHub
 
 export const labelRules = [
     { 
@@ -112,27 +113,21 @@ export const labelRules = [
 
 ]
 
+const NativeScriptOrg = 'NativeScript';
+const TelerikOrg = 'telerik';
+
 export const repos = [
-    'nativescript-facebook',
-    'nativescript-camera',
-    'nativescript-imagepicker',
-    'nativescript-dev-sass',
-    'nativescript-dev-less',
-    'nativescript-background-http',
-    'nativescript-geolocation',
-    'nativescript-fresco',
-    'push-plugin',
-    'nativescript-plugin-seed',
-    'marketplace-feedback',
-    'nsplugins-internal'
+    NativeScriptOrg + '/nativescript-facebook'
+    // NativeScriptOrg + 'nativescript-camera',
+    // NativeScriptOrg + 'nativescript-imagepicker',
+    // NativeScriptOrg + 'nativescript-dev-sass',
+    // NativeScriptOrg + 'nativescript-dev-less',
+    // NativeScriptOrg + 'nativescript-background-http',
+    // NativeScriptOrg + 'nativescript-geolocation',
+    // NativeScriptOrg + 'nativescript-fresco',
+    // NativeScriptOrg + 'push-plugin',
+    // NativeScriptOrg + 'nativescript-plugin-seed',
+    // NativeScriptOrg + 'marketplace-feedback',
+    // NativeScriptOrg + 'nsplugins-internal'
+    // TelerikOrg + 'nativescript-ui-feedback'
 ]
-
-export const organization = 'NativeScript';
-
-// export const repos = [
-//     'nativescript-ui-feedback',
-//     'nativescript-ui-samples',
-//     'nativescript-ui-samples-angular'
-// ]
-
-// export const organization = 'telerik';
