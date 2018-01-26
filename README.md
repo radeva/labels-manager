@@ -5,11 +5,22 @@ Unifies labels across multiple GitHub repos. Initializes new repo labels.
 ## How it works?
 
 * Based on a list of repos that needs to be unified in terms of labels and a set of rules, these labels are unified.
-Run `node main.js --token=<your-token-here>`
+Run 
+```shell
+node main.js --token=<your-token-here>
+```
 
 * Initializes brand new repo labels by deleting the default ones and adding lables specified by the rules
-Run `node init.js --token=<your-token-here> --repo=<org-or-user/repo-name here>` i.e.
-`node init.js --token=<your-token-here> --repo=radeva/test-labels`
+Run 
+
+```shell
+node init.js --token=<your-token-here> --repo=<org-or-user/repo-name here>
+``` 
+i.e.
+
+```shell
+node init.js --token=<your-token-here> --repo=radeva/test-labels
+```
 
 ## Configuration
 
@@ -32,7 +43,11 @@ This means that if there is a label with name equal case-insenstive to any of th
 
 ## Execution
 * In Terminal / Command Prompt run `tsc` to transpile TypeScript to JavaScript 
-* Then run `node main.js --token=<your-token-here>` to update labels across multiple repos according to the specified rules
-* OR run `node init.js --token=<your-token-here> --repo=<org-or-user/repo-name here>` to init a brand new repo labels
-
-
+* Then to update labels across multiple repos according to the specified rules run 
+```shell
+node main.js --token=<your-token-here>
+``` 
+* OR to init a brand new repo labels run 
+```shell
+node init.js --token=<your-token-here> --repo=<org-or-user/repo-name here>
+``` 
