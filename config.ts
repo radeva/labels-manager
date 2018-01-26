@@ -1,5 +1,4 @@
-export const org='NativeScript';
-export const token = '<token-here>';
+export const token = '<token>';
 
 export const labelRules = [
     { 
@@ -66,6 +65,10 @@ export const labelRules = [
         from: ['linux', 'os: linux', 'os:linux'], 
         to: { name: 'os: linux', color: '006b75', required: true }
     },
+    { 
+        from: ['Mac', 'os: mac', 'os:mac'], 
+        to: { name: 'os: mac', color: '006b75', required: true }
+    },
     {
         from: ['breaking-change', 'breaking change'],
         to: { name: 'breaking-change', color: 'd93f0b', required: true }
@@ -81,6 +84,22 @@ export const labelRules = [
     {
         from: ['sev3'],
         to: { name: 'support: sev3', color: '8f563f', required: true }
+    },
+    {
+        from: ['Done'],
+        to: { name: 'done', color: 'ededed', required: true }
+    },
+    {
+        from: ['In Progress'],
+        to: { name: 'in progress', color: 'ededed', required: true }
+    },
+    {
+        from: ['Planned'],
+        to: { name: 'planned', color: 'ededed', required: true }
+    },
+    {
+        from: ['Ready For Test', 'in review'],
+        to: { name: 'ready for test', color: 'ededed', required: true }
     }
 ]
 

@@ -127,7 +127,8 @@ export default class RepoLabelsManager
                     console.log("Update from " + label.name + ": " + label.color 
                     + " to " + rule.to.name + ": " + rule.to.color);
                     if(!dryRun){
-                        this.updateLabelInGitHub(label, { name: rule.to.name, color: rule.to.color });
+                        console.log("update");
+                        return this.updateLabelInGitHub(label, { name: rule.to.name, color: rule.to.color });
                     }
                     
                     isUpdated = true;
