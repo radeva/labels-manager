@@ -131,6 +131,13 @@ export const repos = [
     NativeScriptOrg + '/marketplace-feedback',
     NativeScriptOrg + '/nsplugins-internal',
     TelerikOrg + '/nativescript-ui-feedback',
+    NativeScriptOrg + 'nativescript-ui-chart',
+    NativeScriptOrg + 'nativescript-ui-autocomplete',
+    NativeScriptOrg + 'nativescript-ui-gauge',
+    NativeScriptOrg + 'nativescript-ui-sidedrawer',
+    NativeScriptOrg + 'nativescript-ui-listview',
+    NativeScriptOrg + 'nativescript-ui-core',
+    NativeScriptOrg + 'nativescript-ui-calendar',
     // Templates
     NativeScriptOrg + '/template-hello-world-ng',
     NativeScriptOrg + '/template-hello-world',
@@ -173,7 +180,7 @@ export const repos = [
     NativeScriptOrg + '/nativescript-dev-appium',
     NativeScriptOrg + '/nativescript-dev-typescript',
     NativeScriptOrg + '/nativescript-angular',
-    // Sampels
+    // Samples
     NativeScriptOrg + '/sample-Groceries',
     NativeScriptOrg + '/nativescript-marketplace-demo',
     NativeScriptOrg + '/nativescript-sdk-examples-ng',
@@ -183,4 +190,5 @@ export const repos = [
     // Playground
     NativeScriptOrg + '/playground-feedback',
     NativeScriptOrg + '/playground-tests',
+    NativeScriptOrg + '/functional-tests-core'
 ]
